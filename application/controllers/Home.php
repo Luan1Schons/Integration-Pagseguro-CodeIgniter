@@ -5,12 +5,23 @@ class Home extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->database->
+		$this->load->database();
 	}
 	public function index()
 	{
 		$this->load->helper('payment');
-		credentials();
+		$gateway = gateway('pagseguro');
+
+		if($gateway['payment'] == 'pagseguro')
+		{
+			if($gateway['production'] == true)
+			{
+				echo 'em produção!';
+			}else{
+				echo 'em sandbox';
+			}
+		}
+
 		$this->load->view('home');
 	}
 }
