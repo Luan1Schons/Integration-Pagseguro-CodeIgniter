@@ -47,8 +47,14 @@
             <form method="post" action="" id="form-pagamento" autocomplete="off">
 
             <div class="form-group" style="display:none;">
-            <label>Id Sessão</label>
                 <input type="text" name="id_session" id="id_session" class="form-control">
+               
+            </div>
+            <div class="form-group" style="display:block;">
+            <label>
+            Valor da fatura
+            </label>
+            <input type="number" name="valorPagto" id="valorPagto" value="500" id="valorPagto" class="form-control" readonly>
             </div>
 
             <div class="form-group">
@@ -65,6 +71,37 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label>Data de validade Mês</label>
+                <div class="input-group">
+                <input type="cardbin" name="validadeMes" max-lenght="2" id="validadeMes" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Data de validade Ano</label>
+                <div class="input-group">
+                <input type="cardbin" name="ValidadeAno" max-lenght="4" id="ValidadeAno" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Código de segurança [CVV]</label>
+                <div class="input-group">
+                <input type="cardbin" name="cvv" max-lenght="3" id="cvv" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group loader-installments" style="display: none;">
+            <p class="container d-flex align-items-center justify-content-center"><i class="fa fa-spinner fa-spin mr-2"></i> Carregando...</p>
+            </div>
+
+            <div class="form-group" id="installmentsGroup" style="display:none;">
+                 <label for="installments">Escolha o Parcelamento</label>
+                 <select class="form-control" id="installments">
+                
+                </select>
+                </div>
             
             <div class="form-group">
                 <button type="submit" id="form-pagamento" class="btn btn-success float-right btn-lg">Pagar</button>

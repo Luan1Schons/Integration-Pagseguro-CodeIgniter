@@ -354,8 +354,8 @@
           },
           "pagseguro-sandbox_gateway.php": {
             "type": "-",
-            "size": 4036,
-            "lmtime": 1592596405113,
+            "size": 4288,
+            "lmtime": 1592629778444,
             "modified": false
           },
           "welcome_message.php": {
@@ -364,6 +364,20 @@
             "lmtime": 1592581636895,
             "modified": true
           }
+        }
+      },
+      "assets": {
+        "pag.js": {
+          "type": "-",
+          "size": 3076,
+          "lmtime": 1592629771300,
+          "modified": false
+        },
+        "pag_js.php": {
+          "type": "-",
+          "size": 0,
+          "lmtime": 1592584636371,
+          "modified": false
         }
       },
       "bcit-ci-CodeIgniter-3.1.11-0-gb73eb19": {
@@ -1685,20 +1699,6 @@
             "lmtime": 1568894925000,
             "modified": false
           }
-        }
-      },
-      "assets": {
-        "pag.js": {
-          "type": "-",
-          "size": 2589,
-          "lmtime": 1592595946470,
-          "modified": false
-        },
-        "pag_js.php": {
-          "type": "-",
-          "size": 0,
-          "lmtime": 1592584636371,
-          "modified": false
         }
       }
     }
