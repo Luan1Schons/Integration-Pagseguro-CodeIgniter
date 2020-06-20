@@ -17,11 +17,13 @@
             alert('Ocorreu um erro no sistema!');
         },
         complete: function(retorno){
+            
             $('.loader-payments-method').html('');
             listarMeioPag();
         }
     });
     }
+
 
 // Pega meios de pagamentos do Pagseguro
 function listarMeioPag()
@@ -47,10 +49,96 @@ function listarMeioPag()
       });
 }
 
+// Status que verifica passos de preenchimento das informações do cartão
+var status = 0;
+
+$('#validadeMes').on('keyup', function(e){
+
+    var mesVencimento = $('#validadeMes').val();
+    mesVencimento = mesVencimento.length;
+
+    if(mesVencimento == 2){
+        status = parseInt(status) + 1;
+        $('#validadeMes').attr('readonly', true);
+        $('#cardMesAlert').text('');
+        console.log(status);
+    }else{
+        $('#cardMesAlert').text('Preencha o mês de vencimento!');
+    }
+});
+
+
+$('#validadeAno').on('keyup', function(e){
+
+    var anoVencimento = $('#validadeAno').val();
+    anoVencimento = anoVencimento.length;
+
+    if(anoVencimento == 4){
+        status = parseInt(status) + 1;
+        $('#validadeAno').attr('readonly', true);
+        $('#cardAnoAlert').text('');
+        console.log(status);
+    }else{
+        $('#cardAnoAlert').text('Preencha o ano de vencimento!');
+    }
+});
+
+$('#cvv').on('keyup', function(e){
+
+    var cvv = $('#cvv').val();
+    cvv = cvv.length;
+    
+    if(cvv == 3){
+        status = parseInt(status) + 1;
+        $('#cvv').attr('readonly', true);
+        $('#cardCvvAlert').text('');
+        console.log(status);
+    }else{
+        $('#cardCvvAlert').text('Preencha o CVV!');
+    }
+
+});
+// Assim que verificou todos os passos com sucesso o valor de STATUS deve ser 4, para solicitar o token do cartão com sucesso!
+setInterval(function(){
+    if(status == 4){
+    $('.cardRefresh').show();
+    recupTokenCard($('#flag').val());
+    status = 0;
+    }
+}, 2000);
+
+// Apaga todos os inputs para o procedimento ser refeito
+function cardRefresh(){
+    $('#cvv').attr('readonly', false);
+    $('#cvv').val('');
+
+    $('#validadeMes').attr('readonly', false);
+    $('#validadeMes').val('');
+
+    $('#validadeAno').attr('readonly', false);
+    $('#validadeAno').val('');
+
+    $('#cardBin').attr('readonly', false);
+    $('#cardBin').val('');
+
+    $('#cardToken').val('');
+
+    status = 0;
+}
 // Pega as bandeiras e informações do cartão
 $('#cardBin').on('keyup', function(e){
     var cardBin = $(this).val();
     cardNumber = cardBin.length;
+
+    if(cardNumber == 16){
+        status = parseInt(status) + 1;
+        $('#cardBin').attr('readonly', true);
+        $('#cardNumberAlert').text('');
+        console.log(status);
+    }else if(cardNumber == 6){
+        $('#cardNumberAlert').text('O número do cartão deve ter 16 dígitos!');
+    }
+    
     if(cardNumber == 6){
     PagSeguroDirectPayment.getBrand({
         cardBin: cardBin,
@@ -58,6 +146,7 @@ $('#cardBin').on('keyup', function(e){
             //função de callback para chamadas bem sucedidas
             $('.card-error').html();
             $('.card-flag').html('<img src="https://stc.pagseguro.uol.com.br//public/img/payment-methods-flags/42x20/'+retorno.brand.name+'.png"/>');
+            $('#flag').val(retorno.brand.name);
             recupFlag(retorno.brand.name);
         },
         error: function(retorno){
@@ -69,6 +158,7 @@ $('#cardBin').on('keyup', function(e){
       // Se o campo do numero do cartão for menor que 6 caracteres
     }else if(cardNumber < 6){
         $('.card-flag').empty();
+        $('#flag').val('');
         $('#installmentsGroup').hide();
     }
 })
@@ -112,18 +202,21 @@ function recupFlag(flag)
 function recupTokenCard(flag)
 {
     PagSeguroDirectPayment.createCardToken({
-        cardNumber: $("input#cardbin").val(),
+        cardNumber: $("#cardBin").val(),
         brand: flag,
-        cvv: $("input#cvv").val(),
-        expirationMonth: $("input#validadeMes").val(),
-        expirationYear: $("input#validadeAno").val(),
-        success: { 
+        cvv: $("#cvv").val(),
+        expirationMonth: $("#validadeMes").val(),
+        expirationYear: $("#validadeAno").val(),
+        success: function(retorno){ 
+            $('#cardToken').val(retorno.card.token);
             //função de callback para chamadas bem sucedidas
         },
-        error: {
+        error: function(retorno){
+            console.log(retorno);
             //função de callback para chamadas que falharam
         },
-        complete: {
+        complete: function(retorno){
+            console.log(retorno);
             //função de callback para todas chamadas
         }
     });

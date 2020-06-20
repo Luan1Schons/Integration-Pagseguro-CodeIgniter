@@ -50,45 +50,59 @@
                 <input type="text" name="id_session" id="id_session" class="form-control">
                
             </div>
-            <div class="form-group" style="display:block;">
+            <div class="form-group" style="display:none;">
             <label>
-            Valor da fatura
+            Bandeira do Cartão
             </label>
-            <input type="number" name="valorPagto" id="valorPagto" value="500" id="valorPagto" class="form-control" readonly>
+            <input type="text" name="flag" id="flag" style="display: none;" class="form-control" readonly>
+
+            Token do Cartão
+            </label>
+            <input type="text" name="cardToken" id="cardToken" style="display: none;" class="form-control" readonly>
             </div>
 
             <div class="form-group">
-                <input type="email" name="email" value="contato@sellpublicidade.com.br" placeholder="seu@email.com" class="form-control">
+                <input type="email" name="email" style="display: none;" value="contato@sellpublicidade.com.br" placeholder="seu@email.com" class="form-control">
+            </div>
+
+            <div class="cardRefresh" style="display: none;">
+            <button type="button" class="btn btn-danger float-right" onclick="cardRefresh()">Errou algum campo? Refaça novamente!</button>
             </div>
 
             <div class="form-group">
                 <label>Número do cartão de crédito</label>
+                <span id="cardNumberAlert" style="color: red;"></span>
                 <div class="input-group">
                 <div class="input-group-prepend">
                 <span class="input-group-text card-flag" id="basic-addon1"></span>
                 </div>
-                <input type="cardbin" name="number" max-lenght="16" id="cardBin" class="form-control">
-                </div>
+                <input type="number" name="number" maxlength="16" id="cardBin" class="form-control">
+            </div>
+            
+
             </div>
 
             <div class="form-group">
                 <label>Data de validade Mês</label>
+                <span id="cardMesAlert" style="color: red;"></span>
                 <div class="input-group">
-                <input type="cardbin" name="validadeMes" max-lenght="2" id="validadeMes" class="form-control">
+                <input type="number" name="validadeMes" maxlength="2" id="validadeMes" class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Data de validade Ano</label>
+                <span id="cardAnoAlert" style="color: red;"></span>
                 <div class="input-group">
-                <input type="cardbin" name="ValidadeAno" max-lenght="4" id="ValidadeAno" class="form-control">
+                <input type="number" name="ValidadeAno" maxlength="4" id="validadeAno" class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Código de segurança [CVV]</label>
+                <span id="cardCvvAlert" style="color: red;"></span>
                 <div class="input-group">
-                <input type="cardbin" name="cvv" max-lenght="3" id="cvv" class="form-control">
+                <input type="number" name="cvv" maxlength="3" id="cvv" class="form-control">
                 </div>
             </div>
 
