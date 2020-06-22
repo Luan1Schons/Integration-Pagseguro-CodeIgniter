@@ -45,5 +45,13 @@ class Pagseguro extends CI_Controller {
 
         }
     
-	}
+    }
+    
+    public function buy()
+    {
+        
+        $post = $this->input->post();
+        echo json_encode($post);
+
+    }
 }

@@ -11,10 +11,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 </head>
 <body>
-
-    <h3 class="text-center my-2 mb-2">PagSeguro no CodeIgniter</h3>
-    <h5 class="text-center text-success my-2 mb-2"><i class="fas fa-boxes"></i> Atuando em modo de teste</h3>
-    <div class="col-md-12">
+    <div class="col-md-12" id="alertGeral">
+    <img class="img-responsive block-center" style="margin: 0 auto;" width="250px" src="https://upload.wikimedia.org/wikipedia/commons/8/80/Logo_PagSeguro.png"/>
+    <h3 class="text-center text-info my-2 mb-4"><i class="fas fa-vial"></i> Atuando em modo de teste</h3>
+    
     <div class="row">
     <div class="col-md-4">
     <div class="card">
@@ -36,35 +36,68 @@
     </div>
     </div>
     </div>
-    <div class="col-md-8">
-    <div class="card">
-    <div class="col-md-12">
-            <div class="card-body">
-            <div class="card-error my-2"></div>
-                <p>Preencha suas informações</p>
+            
+            <div class="col-md-4">
             <form method="post" action="" id="form-pagamento" autocomplete="off">
+            <div class="card">
+            <div class="col-md-12">
+            <div class="card-body">
+            <p>Preencha suas informações</p>
+            <div class="card-error my-2"></div>
+
+            <h3>Informações pessoais</h3>
+            <div class="form-group">
             <label>Nome completo do titular</label>
-            <div class="form-group" style="display:block;">
             <input type="text" name="nome-comprador" placeholder="Nome Completo" id="nome-comprador" class="form-control">
-            <input type="text" name="hash-comprador" style="display:block;" id="hash-comprador" class="form-control">
+
+
+            <div class="form-group">
+            <label>CPF do titular</label>
+            <input type="text" name="cpf-comprador" placeholder="000.000.000-00" data-mask="000.000.000-00" id="cpf-comprador" class="form-control">
             </div>
 
             <div class="form-group" style="display:none;">
             <input type="text" name="id_session" id="id_session" class="form-control">
             </div>
 
-            <div class="form-group" style="display:block;">
-            <input type="text" name="flag" id="flag" style="display: none;" class="form-control" readonly>
-            <input type="text" name="cardToken" id="cardToken" style="display: block;" class="form-control" readonly>
+            <h3>Informações Residenciais</h3>
+
+            <div class="form-group">
+            <label>Logradouro</label>
+            <input type="text" name="logradouro" id="logradouro" style="display: block;" class="form-control">
             </div>
 
             <div class="form-group">
-                <input type="email" name="email" style="display: none;" value="contato@sellpublicidade.com.br" placeholder="seu@email.com" class="form-control">
+            <label>Número Residência</label>
+            <input type="text" name="numero-residencia" id="numero-residencia" style="display: block;" class="form-control">
             </div>
+
+            <div class="form-group">
+            <label>Complemento</label>
+            <input type="text" name="complemento" id="complemento" style="display: block;" class="form-control">
+            </div>
+
+            <div class="form-group">
+            <label>Cep</label>
+            <input type="text" name="cep" id="cep" style="display: block;" class="form-control">
+            </div>
+
+            <div class="form-group">
+            <label>CIdade</label>
+            <input type="text" name="cidade" id="cidade" style="display: block;" class="form-control">
+            </div>
+
+            <div class="form-group">
+            <label>Estado</label>
+            <input type="text" name="estado" id="estado" style="display: block;" class="form-control">
+            </div>
+
 
             <div class="cardRefresh" style="display: none;">
             <button type="button" class="btn btn-danger float-right mb-2" onclick="cardRefresh()">Errou algum campo? Refaça novamente!</button>
             </div>
+
+            <h3>Informações do comprador</h3>
 
             <div class="form-group">
                 <label>Número do cartão de crédito</label>
@@ -109,8 +142,8 @@
 
             <div class="form-group" id="installmentsGroup" style="display:none;">
                  <label for="installments">Escolha o Parcelamento</label>
-                 <select class="form-control" id="installments">
-                
+                 <select class="form-control" id="installments" required>
+                <option value="0.00" selected>Selecione uma parcela</option>
                 </select>
                 </div>
             
@@ -118,10 +151,41 @@
                 <button type="submit" id="form-pagamento" class="btn btn-success float-right btn-lg">Pagar</button>
             </div>
             <sṕan class="url" data-url="<?= base_url();?>"></span>
-            </form>
+            
             </div>
         </div>
     </div>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+    <div class="card">
+    <div class="card-body">
+    <h5><i class="fas fa-terminal"></i> Debug Infos</h5>
+
+    <div class="form-group" style="display:block;">
+            <label>Valor das parcelas [DEBUG]</label>
+            <input type="text" name="valorParcela" id="valorParcela" class="form-control" readonly>
+    </div>
+
+    <div class="form-group" style="display:block;">
+            <label>Infos do cartão [DEBUG]</label>
+            <input type="text" name="flag" id="flag" style="display: block;" class="form-control" readonly>
+            <input type="text" name="cardToken" id="cardToken" style="display: block;" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+            <label>Hash comprador [DEBUG]</label>
+            <input type="text" name="hash-comprador" style="display:block;" id="hash-comprador" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+                <label>Email comprador [DEBUG]</label>
+                <input type="email" name="email" style="display: block;" value="contato@sellpublicidade.com.br" placeholder="seu@email.com" class="form-control">
+    </div>
+    </div>
+    </div>
+    </form>
     </div>
     </div>
     

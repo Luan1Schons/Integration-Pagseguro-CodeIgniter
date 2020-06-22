@@ -29,6 +29,8 @@
             cmdKey = 91,
             vKey = 86,
             cKey = 67;
+
+        var ctrlCounter = 0;
     
         $(document).keydown(function(e) {
             if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;
@@ -36,14 +38,27 @@
             if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;
         });
     
-        $("#cardBin").keydown(function(e) {
+        $(document).keydown(function(e) {
             if (ctrlDown && (e.keyCode == vKey || e.keyCode == cKey)) return false;
         });
         
         // Document Ctrl + C/V 
         $(document).keydown(function(e) {
-            if (ctrlDown && (e.keyCode == cKey)) console.log("Document catch Ctrl+C");
-            if (ctrlDown && (e.keyCode == vKey)) console.log("Document catch Ctrl+V");
+            if (ctrlDown && (e.keyCode == cKey)){
+
+                ctrlCounter = ctrlCounter + 1;
+                if(ctrlCounter == 5){
+                    $('#alertGeral').html('<div class="card"><div class="card-body"> <i class="fas fa-exclamation-circle"></i> Você tem atitudes suspeitas!, para a sua segurança o pagamento foi cancelado.</div></div>');
+                }
+
+            } 
+            if (ctrlDown && (e.keyCode == vKey)){
+                ctrlCounter = ctrlCounter + 1;
+                if(ctrlCounter == 5){
+                    $('#alertGeral').html('<div class="card"><div class="card-body"> <i class="fas fa-exclamation-circle"></i> Você tem atitudes suspeitas!, para a sua segurança o pagamento foi cancelado.</div></div>');
+                }
+
+            }
         });
     });
 
@@ -212,16 +227,20 @@ function recupFlag(flag)
         brand: flag,
         maxInstallmentNoInterest: 3,
         success: function(retorno){
+            console.log(retorno);
             $('#installmentsGroup').show();
             //função de callback para chamadas bem sucedidas
             $.each(retorno.installments, function(key, itemA){
                 
                 $.each(itemA, function(key, itemB){
+
+                    // Converter o valor para a moedal REAL
                     var valueInstallment = itemB.installmentAmount.toFixed(2).replace('.', ',');
+
                     if(itemB.interestFree == true){
-                        $('#installments').append('<option value="'+itemB.totalAmount+'">'+itemB.quantity+'x De R$'+valueInstallment+' Sem Juros'+'</option>')
+                        $('#installments').append('<option value="'+itemB.quantity+'" data-parcelas="'+itemB.installmentAmount+'">'+itemB.quantity+'x De R$'+valueInstallment+' Sem Juros'+'</option>')
                     }else{
-                        $('#installments').append('<option value="'+itemB.totalAmount+'">'+itemB.quantity+'x De R$'+valueInstallment+'</option>')
+                        $('#installments').append('<option value="'+itemB.quantity+'" data-parcelas="'+itemB.installmentAmount+'">'+itemB.quantity+'x De R$'+valueInstallment+'</option>')
                     }
 
                 });
@@ -271,6 +290,32 @@ $('#nome-comprador').on('focusout', function (){
         }else{
         var hash = response.senderHash; //Hash estará disponível nesta variável.
         $('#hash-comprador').val(hash)
+        }
+    });
+});
+
+// Mostra a parcela selecionada no input
+
+$('#installments').change(function(response){
+    var parcelas = $('#installments').find(':selected').attr('data-parcelas');
+    $('#valorParcela').val(parcelas);
+});
+
+$('#form-pagamento').on('submit',function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url: "/pagseguro/buy",
+        type: "post",
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function (response) {
+
+           console.log(response);
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
         }
     });
 });
