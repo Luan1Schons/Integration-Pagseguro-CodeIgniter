@@ -1,6 +1,5 @@
-    var amount = "500.00";
     var url = $('.url').attr('data-url');
-    create_session();
+    var amount = "500.00";
     // Cria a sessão na API 2.0 do PagSeguro
     function create_session(){
     $.ajax({
@@ -24,6 +23,29 @@
     });
     }
 
+    $(document).ready(function() {
+        var ctrlDown = false,
+            ctrlKey = 17,
+            cmdKey = 91,
+            vKey = 86,
+            cKey = 67;
+    
+        $(document).keydown(function(e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;
+        }).keyup(function(e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;
+        });
+    
+        $("#cardBin").keydown(function(e) {
+            if (ctrlDown && (e.keyCode == vKey || e.keyCode == cKey)) return false;
+        });
+        
+        // Document Ctrl + C/V 
+        $(document).keydown(function(e) {
+            if (ctrlDown && (e.keyCode == cKey)) console.log("Document catch Ctrl+C");
+            if (ctrlDown && (e.keyCode == vKey)) console.log("Document catch Ctrl+V");
+        });
+    });
 
 // Pega meios de pagamentos do Pagseguro
 function listarMeioPag()
@@ -52,7 +74,7 @@ function listarMeioPag()
 // Status que verifica passos de preenchimento das informações do cartão
 var status = 0;
 
-$('#validadeMes').on('keyup', function(e){
+$('#validadeMes').on('focusout', function(e){
 
     var mesVencimento = $('#validadeMes').val();
     mesVencimento = mesVencimento.length;
@@ -68,12 +90,12 @@ $('#validadeMes').on('keyup', function(e){
 });
 
 
-$('#validadeAno').on('keyup', function(e){
+$('#validadeAno').on('focusout', function(e){
 
     var anoVencimento = $('#validadeAno').val();
     anoVencimento = anoVencimento.length;
 
-    if(anoVencimento == 4){
+    if(anoVencimento == 2){
         status = parseInt(status) + 1;
         $('#validadeAno').attr('readonly', true);
         $('#cardAnoAlert').text('');
@@ -83,7 +105,7 @@ $('#validadeAno').on('keyup', function(e){
     }
 });
 
-$('#cvv').on('keyup', function(e){
+$('#cvv').on('focusout', function(e){
 
     var cvv = $('#cvv').val();
     cvv = cvv.length;
@@ -109,6 +131,8 @@ setInterval(function(){
 
 // Apaga todos os inputs para o procedimento ser refeito
 function cardRefresh(){
+    $('#installmentsGroup').hide();
+    $('.card-flag').html('');
     $('#cvv').attr('readonly', false);
     $('#cvv').val('');
 
@@ -125,8 +149,17 @@ function cardRefresh(){
 
     status = 0;
 }
+var keyUp = 0;
 // Pega as bandeiras e informações do cartão
 $('#cardBin').on('keyup', function(e){
+
+    // Computa a quantidade de teclas utilizadas para arrumar o glitch de conseguir digitar com o campo em readonly
+
+    keyUp = keyUp + 1;
+
+    if(keyUp <= 16)
+    {
+
     var cardBin = $(this).val();
     cardNumber = cardBin.length;
 
@@ -137,8 +170,11 @@ $('#cardBin').on('keyup', function(e){
         console.log(status);
     }else if(cardNumber == 6){
         $('#cardNumberAlert').text('O número do cartão deve ter 16 dígitos!');
+    }else if(cardNumber > 16){
+        $('#cardBin').attr('readonly', false);
+        $('#cardBin').val('');
     }
-    
+
     if(cardNumber == 6){
     PagSeguroDirectPayment.getBrand({
         cardBin: cardBin,
@@ -160,6 +196,10 @@ $('#cardBin').on('keyup', function(e){
         $('.card-flag').empty();
         $('#flag').val('');
         $('#installmentsGroup').hide();
+    }
+    }else{
+        // Correção do bug que permite teclar mesmo com o modo readonly
+        $('.card-error').html('<div class="alert alert-danger">Você só pode digitar 16 caracteres neste campo!</div>');
     }
 })
 
@@ -206,7 +246,7 @@ function recupTokenCard(flag)
         brand: flag,
         cvv: $("#cvv").val(),
         expirationMonth: $("#validadeMes").val(),
-        expirationYear: $("#validadeAno").val(),
+        expirationYear: `20${$("#validadeAno").val()}`,
         success: function(retorno){ 
             $('#cardToken').val(retorno.card.token);
             //função de callback para chamadas bem sucedidas
@@ -221,3 +261,17 @@ function recupTokenCard(flag)
         }
     });
 }
+
+$('#nome-comprador').on('focusout', function (){
+    PagSeguroDirectPayment.onSenderHashReady(function(response){
+
+        if(response.status == 'error') {
+            console.log(response.message);
+            return false;
+        }else{
+        var hash = response.senderHash; //Hash estará disponível nesta variável.
+        $('#hash-comprador').val(hash)
+        }
+    });
+});
+
