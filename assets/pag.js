@@ -147,7 +147,7 @@ setInterval(function(){
 // Apaga todos os inputs para o procedimento ser refeito
 function cardRefresh(){
     $('#installmentsGroup').hide();
-    $('.card-flag').html('');
+    $('.card-flag').html('<i class="fas fa-credit-card"></i>');
     $('#cvv').attr('readonly', false);
     $('#cvv').val('');
 
@@ -208,7 +208,7 @@ $('#cardBin').on('keyup', function(e){
       });
       // Se o campo do numero do cartão for menor que 6 caracteres
     }else if(cardNumber < 6){
-        $('.card-flag').empty();
+        $('.card-flag').html('<i class="fas fa-credit-card"></i>');
         $('#flag').val('');
         $('#installmentsGroup').hide();
     }

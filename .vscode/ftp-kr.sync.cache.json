@@ -1,6 +1,12 @@
 {
   "ftp://elevaempresas.com.br@elevaempresascom": {
     "pagseguro.elevaempresas.com.br": {
+      ".gitignore": {
+        "type": "-",
+        "size": 76,
+        "lmtime": 1592859162814,
+        "modified": false
+      },
       ".htaccess": {
         "type": "-",
         "size": 1226,
@@ -98,8 +104,8 @@
           },
           "payment.php": {
             "type": "-",
-            "size": 690,
-            "lmtime": 1592586444502,
+            "size": 738,
+            "lmtime": 1592859266406,
             "modified": false
           },
           "payments.php": {
@@ -134,6 +140,12 @@
           }
         },
         "controllers": {
+          ".gitignore": {
+            "type": "-",
+            "size": 0,
+            "lmtime": 1592858978903,
+            "modified": false
+          },
           "Home.php": {
             "type": "-",
             "size": 786,
@@ -142,8 +154,8 @@
           },
           "Pagseguro.php": {
             "type": "-",
-            "size": 1548,
-            "lmtime": 1592593029220,
+            "size": 1675,
+            "lmtime": 1592859166430,
             "modified": false
           },
           "Welcome.php": {
@@ -354,8 +366,8 @@
           },
           "pagseguro-sandbox_gateway.php": {
             "type": "-",
-            "size": 4288,
-            "lmtime": 1592629778444,
+            "size": 9360,
+            "lmtime": 1592858327281,
             "modified": false
           },
           "welcome_message.php": {
@@ -367,10 +379,16 @@
         }
       },
       "assets": {
+        "jquery.mask.js": {
+          "type": "-",
+          "size": 23176,
+          "lmtime": 1585060247000,
+          "modified": false
+        },
         "pag.js": {
           "type": "-",
-          "size": 3076,
-          "lmtime": 1592629771300,
+          "size": 10363,
+          "lmtime": 1592857954514,
           "modified": false
         },
         "pag_js.php": {
@@ -429,8 +447,8 @@
       },
       "readme.rst": {
         "type": "-",
-        "size": 2343,
-        "lmtime": 1568894925000,
+        "size": 173,
+        "lmtime": 1592859247338,
         "modified": false
       },
       "system": {
