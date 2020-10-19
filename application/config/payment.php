@@ -11,8 +11,8 @@ $config['pagseguro'] = array(
     'url_production' => 'https://ws.pagseguro.uol.com.br/v2',
     'url_sandbox' => 'https://ws.sandbox.pagseguro.uol.com.br/v2',
     // <--- Tokens -->
-    'token_production' => 'f4c11e75-b9a5-458e-ac65-a16bdaf3065ffbde5fbe400880d8b4bef336bba3a7113131-6683-4647-a6ab-a324d7206707',
-    'token_sandbox' => 'D037370229B24E5E9721D7F0E9936D6B',
+    'token_production' => 'your production token',
+    'token_sandbox' => 'your sandbox token',
     // <!--- Tokens -->
     'payment' => 'pagseguro',
     'version' => $config['version']
