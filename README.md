@@ -51,9 +51,9 @@
   <summary>Informações do Projeto</summary>
   <ol>
     <li>
-      <a href="#about-the-project">Sobre o Projeto</a>
+      <a href="#sobre-o-projeto">Sobre o Projeto</a>
       <ul>
-        <li><a href="#built-with">Criado com as Techs</a></li>
+        <li><a href="#criado-com">Criado com as Techs</a></li>
       </ul>
     </li>
     <li>
@@ -66,14 +66,14 @@
     <li><a href="#utilização">Uso</a></li>
     <li><a href="#contribua">Contribua</a></li>
     <li><a href="#licença">Licença</a></li>
-    <li><a href="#contatato">Contato</a></li>
+    <li><a href="#contato">Contato</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## Sobre o projeto
+## Sobre-o-projeto
 
 Esta integração do CodeIgniter foi criada para facilitar a inicialização de um projeto, o Processo de integração ao PagSeguro sempre é demorada portanto criei este projeto no GitHub para o meu uso pessoal & para as pessoas que desejam economizar no tempo de desenvolvimento de algo novo.
 
@@ -84,7 +84,7 @@ Benefícios:
 * Tela de Pagamento já desenvolvida.
 
 
-### Criado com:
+### Criado-com
 
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
