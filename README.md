@@ -122,7 +122,7 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
    ```sh
    git clone https://github.com/Luan1Schons/Pagseguro-CodeIgniter.git
    ```
-3. Preencha a sua AP]I em `application/config/payment.php`
+3. Preencha com os seus TOKENS em `application/config/payment.php`
 
 <!-- language: php -->
 ```php
@@ -132,9 +132,8 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
     'url_production' => 'https://ws.pagseguro.uol.com.br/v2',
     'url_sandbox' => 'https://ws.sandbox.pagseguro.uol.com.br/v2',
     // <--- Tokens -->
-    'token_production' => 'your production token',
-    'token_sandbox' => 'your sandbox token',
-    // <!--- Tokens -->
+    'token_production' => 'your production token', // Seu Token aqui
+    'token_sandbox' => 'your sandbox token', // Seu Token aqui
     'payment' => 'pagseguro',
     'version' => $config['version']
 );
@@ -158,15 +157,15 @@ As contribuições são o que tornam a comunidade de código aberto um lugar inc
 2. Crie o seu Branch de Feature (`git checkout -b feature/AmazingFeature`)
 3. Commita suas alterações (`git commit -m 'Add some AmazingFeature'`)
 4. Push para a Branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+5. Envie um Pull Request
 
 
 
 <!-- LICENSE -->
-## Lisença
+## Licença
 
 
-Distribuído sob a licença MIT. Ver `LISENÇA` para mais informações.
+Distribuído sob a licença MIT. Ver `LICENÇA` para mais informações.
 
 
 
