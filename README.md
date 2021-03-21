@@ -77,7 +77,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Framework][https://cdn.worldvectorlogo.com/logos/codeigniter.svg]](https://cdn.worldvectorlogo.com/logos/codeigniter.svg)
 
 Esta integração do CodeIgniter foi criada para facilitar a inicialização de um projeto, o Processo de integração ao PagSeguro sempre é demorada portanto criei este projeto no GitHub para o meu uso pessoal & para as pessoas que desejam economizar no tempo de desenvolvimento de algo novo.
 
