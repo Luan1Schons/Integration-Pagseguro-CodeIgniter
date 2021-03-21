@@ -123,9 +123,18 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
    git clone https://github.com/Luan1Schons/Pagseguro-CodeIgniter.git
    ```
 3. Preencha a sua API em `application/config/payment.php`
-   ```JS
-  'token_production' => 'Seu token de produção',
-  'token_sandbox' => 'Seu token do sandbox'
+   ```php
+  $config['pagseguro'] = array(
+    'production' => false,
+    'url_production' => 'https://ws.pagseguro.uol.com.br/v2',
+    'url_sandbox' => 'https://ws.sandbox.pagseguro.uol.com.br/v2',
+    // <--- Tokens -->
+    'token_production' => 'your production token',
+    'token_sandbox' => 'your sandbox token',
+    // <!--- Tokens -->
+    'payment' => 'pagseguro',
+    'version' => $config['version']
+);
    ```
 
 
