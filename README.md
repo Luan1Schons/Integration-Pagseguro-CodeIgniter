@@ -125,6 +125,7 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
 3. Preencha a sua AP]I em `application/config/payment.php`
 
 <!-- language: php -->
+```php
 <?php 
   $config['pagseguro'] = array(
     'production' => false,
@@ -138,7 +139,7 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
     'version' => $config['version']
 );
 ?>
-  
+```
 
 
 
