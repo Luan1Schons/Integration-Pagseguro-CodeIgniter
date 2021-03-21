@@ -28,7 +28,7 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo">
   </a>
 
   <h3 align="center">PagSeguro Integrado ao Framework CodeIgniter</h3>
