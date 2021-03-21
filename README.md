@@ -36,11 +36,11 @@
   <p align="center">
     Inicie o seu Projeto já com a integração do PagSeguro Feita
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore a documentação »</strong></a>
+    <a href="https://dev.pagseguro.uol.com.br/"><strong>Explore a documentação »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Peça uma Feature</a>
+    <a href="https://github.com/Luan1Schons/Pagseguro-CodeIgniter/issues">Peça uma Feature</a>
   </p>
 </p>
 
