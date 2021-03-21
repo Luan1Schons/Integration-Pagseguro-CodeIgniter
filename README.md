@@ -123,7 +123,7 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
    git clone https://github.com/Luan1Schons/Pagseguro-CodeIgniter.git
    ```
 3. Preencha a sua API em `application/config/payment.php`
-   ```php
+   ```sh
   $config['pagseguro'] = array(
     'production' => false,
     'url_production' => 'https://ws.pagseguro.uol.com.br/v2',
@@ -135,7 +135,8 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
     'payment' => 'pagseguro',
     'version' => $config['version']
 );
-   ```
+```
+  
 
 
 
