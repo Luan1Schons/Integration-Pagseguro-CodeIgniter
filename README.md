@@ -57,16 +57,16 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Iniciando</a>
+      <a href="#iniciando">Iniciando</a>
       <ul>
-        <li><a href="#prerequisites">Pre-requisitos</a></li>
-        <li><a href="#installation">Instalação</a></li>
+        <li><a href="#pre-requisitos">Pre-requisitos</a></li>
+        <li><a href="#Instalação">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Uso</a></li>
-    <li><a href="#contributing">Contribua</a></li>
-    <li><a href="#license">Licença</a></li>
-    <li><a href="#contact">Contato</a></li>
+    <li><a href="#utilização">Uso</a></li>
+    <li><a href="#contribua">Contribua</a></li>
+    <li><a href="#licença">Licença</a></li>
+    <li><a href="#contatato">Contato</a></li>
   </ol>
 </details>
 
@@ -145,7 +145,7 @@ Utilize este projeto para criar sistemas que dependam de um meio de pagamento se
 
 
 <!-- CONTRIBUTING -->
-## Contribuição
+## Contribua
 
 As contribuições são o que tornam a comunidade de código aberto um lugar incrível para aprender, inspirar e criar. Quaisquer contribuições que você fizer ficarei **muito apreciado**.
 
@@ -166,7 +166,7 @@ Distribuído sob a licença MIT. Ver `LICENÇA` para mais informações.
 
 
 <!-- CONTACT -->
-## Contact
+## Contato
 
 Luan Schons Griebler - [@theluanschons](https://instagram.com/theluanschons) - luanschons2000@gmail.com
 
