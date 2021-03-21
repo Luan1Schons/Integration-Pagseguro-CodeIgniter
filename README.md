@@ -63,21 +63,17 @@
         <li><a href="#installation">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#usage">Uso</a></li>
+    <li><a href="#contributing">Contribua</a></li>
+    <li><a href="#license">Licença</a></li>
+    <li><a href="#contact">Contato</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Framework][https://cdn.worldvectorlogo.com/logos/codeigniter.svg]](https://cdn.worldvectorlogo.com/logos/codeigniter.svg)
+## Sobre o projeto
 
 Esta integração do CodeIgniter foi criada para facilitar a inicialização de um projeto, o Processo de integração ao PagSeguro sempre é demorada portanto criei este projeto no GitHub para o meu uso pessoal & para as pessoas que desejam economizar no tempo de desenvolvimento de algo novo.
 
