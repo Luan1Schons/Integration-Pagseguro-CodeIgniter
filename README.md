@@ -125,6 +125,7 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
 3. Preencha a sua AP]I em `application/config/payment.php`
 
 <!-- language: php -->
+<?php 
   $config['pagseguro'] = array(
     'production' => false,
     'url_production' => 'https://ws.pagseguro.uol.com.br/v2',
@@ -136,7 +137,7 @@ Caso você já tenha gerado o token anteriormente, ele será enviado ao seu e-ma
     'payment' => 'pagseguro',
     'version' => $config['version']
 );
-
+?>
   
 
 
