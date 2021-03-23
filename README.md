@@ -72,7 +72,7 @@ Esta integração do CodeIgniter foi criada para facilitar a inicialização de 
 
 Benefícios:
 * Código funcional & seguro.
-* Ecomize tempo no desenvolvimento.
+* Economize tempo no desenvolvimento.
 * 100% Integrado ao PagSeguro modo SandBox & Produção :smile:
 * Tela de Pagamento já desenvolvida.
 
